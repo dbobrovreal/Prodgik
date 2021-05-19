@@ -1,0 +1,10 @@
+C:\Users\gitko\Desktop\learning\Данил учеба\Prodgik\Prodgik\bin\Debug\Prodgik.exe.config
+C:\Users\gitko\Desktop\learning\Данил учеба\Prodgik\Prodgik\bin\Debug\Prodgik.exe
+C:\Users\gitko\Desktop\learning\Данил учеба\Prodgik\Prodgik\bin\Debug\Prodgik.pdb
+C:\Users\gitko\Desktop\learning\Данил учеба\Prodgik\Prodgik\obj\Debug\Prodgik.csprojAssemblyReference.cache
+C:\Users\gitko\Desktop\learning\Данил учеба\Prodgik\Prodgik\obj\Debug\Prodgik.Form1.resources
+C:\Users\gitko\Desktop\learning\Данил учеба\Prodgik\Prodgik\obj\Debug\Prodgik.Properties.Resources.resources
+C:\Users\gitko\Desktop\learning\Данил учеба\Prodgik\Prodgik\obj\Debug\Prodgik.csproj.GenerateResource.cache
+C:\Users\gitko\Desktop\learning\Данил учеба\Prodgik\Prodgik\obj\Debug\Prodgik.csproj.CoreCompileInputs.cache
+C:\Users\gitko\Desktop\learning\Данил учеба\Prodgik\Prodgik\obj\Debug\Prodgik.exe
+C:\Users\gitko\Desktop\learning\Данил учеба\Prodgik\Prodgik\obj\Debug\Prodgik.pdb
