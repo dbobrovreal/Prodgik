@@ -21,11 +21,6 @@ namespace Prodgik
             this.passField.Size = new Size(this.passField.Size.Width, 50);
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void closeButten_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -86,19 +81,24 @@ namespace Prodgik
                 return;
             }
 
-            if (isUserLogin())
-                return;
+            String loginUser = loginField.Text;
+            String passUser = passField.Text;
 
             DB db = new DB();
-            MySqlCommand command = new MySqlCommand("INSERT INTO `users` (`login`, `pass`, `name`, `surname`) VALUES (@login, @pass, @name, @surname)", db.getConnection());
 
-            command.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginField.Text;
-            command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = passField.Text;
+            DataTable table = new DataTable();
 
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-            db.openConnection();
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @uL AND `pass` =  @uP", db.getConnection());
 
-          /* if (command.ExecuteNonQuery() == 1)
+            command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
+            command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
+
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+
+            if (table.Rows.Count > 0)
             {
                 this.Hide();
                 MainForm tvShow = new MainForm();
@@ -106,46 +106,10 @@ namespace Prodgik
             }
             else
             {
-                MessageBox.Show("Аккаунт не был создан");
-            }*/
-
-            db.closeConnection();
-           
-        }
-
-        public Boolean isUserLogin()
-        {
-            DB db = new DB();
-
-            DataTable table = new DataTable();
-            DataTable tablepass = new DataTable();
-
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-            MySqlDataAdapter adapterpass = new MySqlDataAdapter();
-
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @uL AND `pass` =  @uP", db.getConnection());
-
-            command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginField.Text;
-            
-
-            adapter.SelectCommand = command;
-            adapter.Fill(table);
-
-            if (table.Rows.Count > 0)
-            {
-                command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passField.Text;
-                adapterpass.SelectCommand = command;
-                adapterpass.Fill(tablepass);
-                if (tablepass.Rows.Count > 0)
-                {
-                    this.Hide();
-                    MainForm tvShow = new MainForm();
-                    tvShow.Show();
-                }
-                return true;
+                MessageBox.Show("Логин или пароль не верный");
+                return;
             }
-            else
-                return false;
+
         }
 
         private void registerLabel_Click(object sender, EventArgs e)
@@ -154,5 +118,6 @@ namespace Prodgik
             RegisterForm registerForm = new RegisterForm();
             registerForm.Show();
         }
+
     }
 }
